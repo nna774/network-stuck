@@ -5,7 +5,7 @@
 int main(int, char**) {
   http::Result res = http::get("http://example.com/");
 
-  if(!res.second) {
+  if(res.second) {
     std::cerr << res.second->error << std::endl;
     return -1;
   }
