@@ -1,3 +1,5 @@
+#pragma once
+
 #include <variant>
 
 // Either<T, T> と作ると困るが、それを望むことは無いだろうし、一旦無視する(必要であれば特殊化すれば良い)。
