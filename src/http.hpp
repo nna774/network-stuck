@@ -1,6 +1,5 @@
-#include <optional>
 #include <string>
-#include <utility>
+#include "either.hpp"
 
 namespace http {
   struct Error {
@@ -15,7 +14,7 @@ namespace http {
     int port;
     std::string path;
   };
-  using Result = std::pair<std::optional<Response>, std::optional<Error>>;
+  using Result = Either::Either<Error, Response>;
 
   Result get(std::string_view uri);
   URI parseURI(std::string_view uri);

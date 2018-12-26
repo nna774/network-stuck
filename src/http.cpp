@@ -12,7 +12,7 @@ namespace http {
   Result error(std::string_view err_str) {
     Error err;
     err.error = err_str;
-    return Result{std::nullopt, std::make_optional(err)};
+    return Result{Either::Left, err};
   }
 
   Result get(std::string_view uri_str) {

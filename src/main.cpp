@@ -5,12 +5,12 @@
 int main(int, char**) {
   http::Result res = http::get("http://example.com/");
 
-  if(res.second) {
-    std::cerr << res.second->error << std::endl;
+  if(res.is_left()) {
+    std::cerr << res.left().error << std::endl;
     return -1;
   }
 
-  http::Response const& resp = *res.first;
+  http::Response const& resp = res.right();
 
   if(resp.status_code != 200) {
     std::cerr << "status code not 200. got: " << resp.status_code << std::endl;
