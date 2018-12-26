@@ -4,7 +4,7 @@ TARGET := main
 CXX := g++
 CXXFLAGS := -Wall -Wextra -std=c++17
 RM := rm -fr
-SRCS := main.cpp http.cpp
+SRCS := main.cpp http.cpp tcp.cpp
 OBJS := $(SRCS:%.cpp=%.o)
 DEPS := $(SRCS:%.cpp=%.d)
 -include $(DEPS)
