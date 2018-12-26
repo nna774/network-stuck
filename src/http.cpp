@@ -21,7 +21,6 @@ namespace http {
     uri.port = 80;
     uri.path = "/";
     struct addrinfo hints{}, *res;
-    struct in_addr addr{};
 
     hints.ai_family = AF_INET; // IPv4
     hints.ai_socktype = SOCK_STREAM;
