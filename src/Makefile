@@ -16,6 +16,10 @@ $(TARGET): $(OBJS)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c -MMD -MP $<
 
+debug: CXXFLAGS += -DDEBUG -g
+debug: clean
+	$(CXX) $(SRCS) $(CXXFLAGS) -o $(TARGET)
+
 clean:
 	$(RM) *.o $(TARGET) $(DEPS)
 
