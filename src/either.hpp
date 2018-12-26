@@ -12,9 +12,12 @@ namespace Either {
   template<typename Left, typename Right>
   class Either {
     std::variant<Left, Right> body;
+    using this_t = Either<Left, Right>*;
   public:
-    bool is_left() { return body.index() == 0; }
-    bool is_right() { return body.index() == 1; }
+    bool is_left() const { return body.index() == 0; }
+    bool is_right() const { return body.index() == 1; }
+    Left const& left() const { return std::get<Left>(body); }
+    Right const& right() const { return std::get<Right>(body); }
     Left& left() { return std::get<Left>(body); }
     Right& right() { return std::get<Right>(body); }
     Either() : body{Left{}} {}
