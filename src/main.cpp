@@ -6,7 +6,7 @@ int main(int, char**) {
   http::Result res = http::get("http://example.com/");
 
   if(res.is_left()) {
-    std::cerr << res.left().error << std::endl;
+    std::cerr << res.left()->error() << std::endl;
     return -1;
   }
 

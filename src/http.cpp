@@ -10,9 +10,7 @@
 
 namespace http {
   Result error(std::string_view err_str) {
-    Error err;
-    err.error = err_str;
-    return Result{Either::Left, err};
+    return Result{Either::Left, Error::error(err_str)};
   }
 
   Result get(std::string_view uri_str) {
