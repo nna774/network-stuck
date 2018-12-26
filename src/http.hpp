@@ -1,12 +1,14 @@
 #pragma once
 
 #include <string>
+#include <map>
 
 #include "either.hpp"
 #include "error.hpp"
 
 namespace http {
   struct Response {
+    std::map<std::string, std::string> headers;
     int status_code;
     std::string body;
   };

@@ -29,9 +29,22 @@ namespace http {
     std::string const& req_str = req.str();
     conn.write(req_str);
     std::string buf{conn.read()};
-    std::cout << buf;
 
-    return error("success!");
+    std::string tmp;
+    std::map<std::string, std::string> headers;
+    std::stringstream ss{buf}, rest;
+    do {
+      std::getline(ss, tmp);
+      headers[tmp] = "";
+    } while(tmp != "\r"); // wa-
+
+    Response res{};
+    rest << ss.rdbuf();
+    res.status_code = 200; //
+    res.headers = headers;
+    res.body = rest.str();
+
+    return Result{Either::Right, res};
   }
 
   URI parseURI(std::string_view uri_str) {
